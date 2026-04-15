@@ -1,0 +1,36 @@
+<h2 class="titulo">Carrito</h2>
+
+<div class="form-container">
+
+  <div class="carrito-card">
+
+    <div class="item" *ngFor="let p of carritoService.carrito(); let i = index">
+
+      <img [src]="'img/' + p.imagen">
+
+      <div class="info">
+        <h4>{{ p.nombre }}</h4>
+        <p>Cantidad: {{ p.cantidad || 1 }}</p>
+        <p class="precio">
+          {{ (p.precio * (p.cantidad || 1)) | currency }}
+        </p>
+      </div>
+
+      <button class="eliminar" (click)="carritoService.eliminar(i)">
+        ✕
+      </button>
+
+    </div>
+
+    <hr>
+
+    <h3 class="total">
+      Total: {{ carritoService.total() | currency }}
+    </h3>
+
+    <button class="pagar" (click)="pagar()">
+      Pagar
+    </button>
+
+  </div>
+</div>

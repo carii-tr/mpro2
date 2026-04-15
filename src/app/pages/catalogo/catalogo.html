@@ -1,0 +1,21 @@
+<h2>Catálogo de Bolsas</h2>
+
+<div *ngIf="productos === null">
+  <p>Cargando...</p>
+</div>
+
+<div *ngIf="productos?.length === 0">
+  <p>No hay productos</p>
+</div>
+
+<div *ngIf="productos && productos.length > 0">
+
+  <div class="grid">
+    <app-producto-card
+      *ngFor="let p of productos"
+      [producto]="p"
+      (agregarClick)="agregar($event)">
+    </app-producto-card>
+  </div>
+
+</div>
